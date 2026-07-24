@@ -55,7 +55,6 @@
     color: var(--gold);
   }
 
-  /* ---------- Header ---------- */
   header {
     position: sticky;
     top: 0;
@@ -102,7 +101,6 @@
 
   .nav-cta { font-size: 12px; padding: 10px 18px; }
 
-  /* ---------- Hero: claim notice ---------- */
   .hero { padding: 88px 0 80px; }
 
   .notice-frame {
@@ -165,7 +163,6 @@
   }
   .no-fee-note strong { color: var(--forest); }
 
-  /* Seal / signature element */
   .seal {
     justify-self: end;
     width: 190px; height: 190px;
@@ -195,13 +192,11 @@
   }
   @keyframes seal-in { to { opacity: 1; transform: scale(1) rotate(-4deg); } }
 
-  /* ---------- Section shell ---------- */
   section { padding: 92px 0; }
   .section-head { max-width: 640px; margin-bottom: 52px; }
   .section-head h2 { font-size: clamp(28px, 3.2vw, 36px); margin-top: 14px; }
   .section-head p { color: var(--slate); margin-top: 16px; font-size: 16px; max-width: 54ch; }
 
-  /* ---------- Services ---------- */
   .services {
     display: grid; grid-template-columns: repeat(3, 1fr);
     border-top: 1px solid var(--hairline);
@@ -221,7 +216,6 @@
   .service h3 { font-size: 20px; font-weight: 500; margin-bottom: 10px; }
   .service p { color: var(--slate); font-size: 14.5px; }
 
-  /* ---------- Process (real sequence) ---------- */
   .process { background: var(--forest); color: var(--paper); }
   .process .eyebrow { color: var(--gold-bright); }
   .process .section-head p { color: rgba(247,244,236,0.65); }
@@ -238,7 +232,6 @@
   }
   .step.visible::before { width: 100%; }
 
-  /* ---------- Proof ---------- */
   .proof {
     border-top: 1px solid var(--hairline);
     border-bottom: 1px solid var(--hairline);
@@ -250,7 +243,6 @@
   .stat .figure span { color: var(--gold); }
   .stat .label { margin-top: 8px; font-size: 13px; color: var(--slate); }
 
-  /* ---------- FAQ ---------- */
   .faq-list { border-top: 1px solid var(--hairline); }
   .faq-item { border-bottom: 1px solid var(--hairline); }
   .faq-q {
@@ -269,7 +261,6 @@
   }
   .faq-item.open .faq-a { max-height: 200px; padding-bottom: 22px; }
 
-  /* ---------- Contact / opt-in form ---------- */
   .contact { background: var(--ink); color: var(--paper); }
   .contact .eyebrow { color: var(--gold-bright); }
   .contact-grid {
@@ -336,7 +327,6 @@
   }
   .error-text.show { display: block; }
 
-  /* ---------- Footer ---------- */
   footer { padding: 44px 0; border-top: 1px solid var(--hairline); }
   .footer-inner {
     display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;
@@ -347,11 +337,9 @@
   .footer-links a:hover { color: var(--forest); }
   .footer-legal { max-width: 640px; font-size: 11px; line-height: 1.6; color: var(--slate); opacity: 0.85; }
 
-  /* ---------- Reveal ---------- */
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* ---------- Responsive ---------- */
   @media (max-width: 940px) {
     .wrap { padding: 0 24px; }
     .nav-links { display: none; }
@@ -621,7 +609,12 @@
       <a href="#services">Services</a>
       <a href="#process">How It Works</a>
       <a href="#faq">FAQ</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
     </div>
+  </div>
+  <div class="wrap" style="margin-top:18px; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--slate);">
+    <p>Eriana Investments &nbsp;•&nbsp; 2437 Bear Rock Glen, Escondido, CA 92026 &nbsp;•&nbsp; <a href="tel:+17608456832">760-845-6832</a> &nbsp;•&nbsp; <a href="mailto:info@erianainvestments.com">info@erianainvestments.com</a></p>
   </div>
   <div class="wrap" style="margin-top:22px;">
     <p class="footer-legal">Eriana Investments assists individuals with the research, preparation, and filing of surplus funds claims following tax deed sales and foreclosure auctions. We are not a law firm and do not provide legal advice. Fees are contingency-based and disclosed prior to engagement. Availability of surplus funds and claim eligibility vary by county, state, and case.</p>
@@ -629,7 +622,6 @@
 </footer>
 
 <script>
-  // Scroll reveal
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -646,7 +638,6 @@
   }, { threshold: 0.2 });
   stepEls.forEach(el => stepIo.observe(el));
 
-  // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(item => {
     const btn = item.querySelector('.faq-q');
     btn.addEventListener('click', () => {
@@ -656,7 +647,6 @@
     });
   });
 
-  // Form handling
   const form = document.getElementById('leadForm');
   const fields = document.getElementById('formFields');
   const success = document.getElementById('formSuccess');
