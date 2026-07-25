@@ -112,3 +112,586 @@
     gap: 48px;
     align-items: start;
   }
+  .notice-frame::before {
+    content: '';
+    position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 1px solid var(--hairline); pointer-events: none;
+  }
+
+  .notice-head {
+    grid-column: 1 / -1;
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 24px; margin-bottom: 36px;
+    border-bottom: 1px solid var(--hairline);
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+    color: var(--slate); letter-spacing: 0.04em;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 4.6vw, 56px);
+    max-width: 15ch;
+    opacity: 0; transform: translateY(14px);
+    animation: rise 0.8s cubic-bezier(.2,.7,.2,1) 0.15s forwards;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--gold);
+    position: relative; white-space: nowrap;
+  }
+  .underline-draw { position: relative; display: inline-block; }
+  .underline-draw::after {
+    content: ''; position: absolute; left: 0; bottom: 3px; height: 2px; width: 100%;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
+    animation: draw 0.9s ease 1.05s forwards;
+  }
+  @keyframes draw { to { transform: scaleX(1); } }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+  .hero-sub {
+    max-width: 46ch; margin-top: 22px; color: var(--slate); font-size: 16.5px;
+    opacity: 0; animation: rise 0.8s cubic-bezier(.2,.7,.2,1) 0.35s forwards;
+  }
+
+  .hero-actions {
+    margin-top: 34px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+    opacity: 0; animation: rise 0.8s cubic-bezier(.2,.7,.2,1) 0.5s forwards;
+  }
+
+  .no-fee-note {
+    margin-top: 18px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px; color: var(--slate); letter-spacing: 0.02em;
+  }
+  .no-fee-note strong { color: var(--forest); }
+
+  .seal {
+    justify-self: end;
+    width: 190px; height: 190px;
+    border-radius: 50%;
+    border: 1.5px dashed var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 22px;
+    position: relative;
+    opacity: 0; transform: scale(0.9) rotate(-4deg);
+    animation: seal-in 0.7s cubic-bezier(.2,.7,.2,1) 0.6s forwards;
+  }
+  .seal::before {
+    content: '';
+    position: absolute; inset: 12px;
+    border: 1px solid var(--hairline);
+    border-radius: 50%;
+  }
+  .seal-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--forest); line-height: 1.6;
+  }
+  .seal-text .big {
+    font-family: 'Fraunces', serif; font-style: italic; font-size: 17px;
+    color: var(--gold); display: block; margin: 4px 0; letter-spacing: 0;
+  }
+  @keyframes seal-in { to { opacity: 1; transform: scale(1) rotate(-4deg); } }
+
+  section { padding: 92px 0; }
+  .section-head { max-width: 640px; margin-bottom: 52px; }
+  .section-head h2 { font-size: clamp(28px, 3.2vw, 36px); margin-top: 14px; }
+  .section-head p { color: var(--slate); margin-top: 16px; font-size: 16px; max-width: 54ch; }
+
+  .services {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--hairline);
+  }
+  .service {
+    padding: 38px 34px;
+    border-right: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    transition: background 0.3s ease;
+  }
+  .service:last-child { border-right: none; }
+  .service:hover { background: var(--paper-dim); }
+  .service .num {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+    color: var(--gold); margin-bottom: 20px; display: block;
+  }
+  .service h3 { font-size: 20px; font-weight: 500; margin-bottom: 10px; }
+  .service p { color: var(--slate); font-size: 14.5px; }
+
+  .process { background: var(--forest); color: var(--paper); }
+  .process .eyebrow { color: var(--gold-bright); }
+  .process .section-head p { color: rgba(247,244,236,0.65); }
+  .process .section-head h2 { color: var(--paper); }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .step { padding: 30px 26px 0; border-top: 1px solid var(--hairline-dark); position: relative; }
+  .step-num { font-family: 'Fraunces', serif; font-style: italic; font-size: 15px; color: var(--gold-bright); }
+  .step h3 { font-size: 18px; font-weight: 500; margin: 12px 0 10px; color: var(--paper); }
+  .step p { font-size: 13.5px; color: rgba(247,244,236,0.6); padding-bottom: 30px; }
+  .step::before {
+    content: ''; position: absolute; top: -1px; left: 0; width: 0%; height: 1px;
+    background: var(--gold-bright); transition: width 0.6s ease;
+  }
+  .step.visible::before { width: 100%; }
+
+  .proof {
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .stat { padding: 46px 34px; border-right: 1px solid var(--hairline); }
+  .stat:last-child { border-right: none; }
+  .stat .figure { font-family: 'Fraunces', serif; font-size: 40px; color: var(--forest); }
+  .stat .figure span { color: var(--gold); }
+  .stat .label { margin-top: 8px; font-size: 13px; color: var(--slate); }
+
+  .faq-list { border-top: 1px solid var(--hairline); }
+  .faq-item { border-bottom: 1px solid var(--hairline); }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+    padding: 24px 4px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Fraunces', serif; font-size: 18px; color: var(--forest);
+  }
+  .faq-q .plus {
+    font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: var(--gold);
+    transition: transform 0.3s ease; flex-shrink: 0; margin-left: 20px;
+  }
+  .faq-item.open .faq-q .plus { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
+    color: var(--slate); font-size: 15px; padding: 0 4px;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding-bottom: 22px; }
+
+  .contact { background: var(--ink); color: var(--paper); }
+  .contact .eyebrow { color: var(--gold-bright); }
+  .contact-grid {
+    display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: start;
+  }
+  .contact h2 { color: var(--paper); font-size: clamp(28px, 3.4vw, 38px); }
+  .contact-copy p { color: rgba(247,244,236,0.65); margin-top: 18px; font-size: 15.5px; max-width: 40ch; }
+  .contact-points { margin-top: 30px; display: flex; flex-direction: column; gap: 14px; }
+  .contact-point { display: flex; gap: 12px; font-size: 14.5px; color: rgba(247,244,236,0.8); }
+  .contact-point .dot { color: var(--gold-bright); flex-shrink: 0; }
+
+  form {
+    background: rgba(247,244,236,0.04);
+    border: 1px solid var(--hairline-dark);
+    padding: 36px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .field { margin-bottom: 18px; }
+  .field label {
+    display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+    letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,244,236,0.6);
+    margin-bottom: 8px;
+  }
+  .field input, .field select, .field textarea {
+    width: 100%; background: transparent; border: 1px solid var(--hairline-dark);
+    color: var(--paper); font-family: 'Inter', sans-serif; font-size: 14.5px;
+    padding: 12px 14px; outline: none; transition: border-color 0.2s ease;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(247,244,236,0.35); }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold-bright); }
+  .field textarea { resize: vertical; min-height: 84px; }
+
+  .consent {
+    display: flex; gap: 12px; align-items: flex-start;
+    margin: 22px 0 26px; padding: 16px 18px;
+    border: 1px solid var(--hairline-dark);
+    background: rgba(247,244,236,0.03);
+  }
+  .consent input[type="checkbox"] {
+    width: 17px; height: 17px; margin-top: 2px; accent-color: var(--gold-bright); flex-shrink: 0;
+  }
+  .consent label {
+    font-size: 12.5px; line-height: 1.55; color: rgba(247,244,236,0.7);
+  }
+  .consent a { color: var(--gold-bright); text-decoration: underline; }
+
+  .form-submit-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .form-note { font-size: 12px; color: rgba(247,244,236,0.45); }
+
+  .form-success {
+    display: none; text-align: center; padding: 40px 20px;
+  }
+  .form-success.show { display: block; }
+  .form-success .check {
+    width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--gold-bright);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
+    color: var(--gold-bright); font-size: 20px;
+  }
+  .form-success h3 { color: var(--paper); font-size: 20px; margin-bottom: 8px; }
+  .form-success p { color: rgba(247,244,236,0.6); font-size: 14px; }
+
+  .error-text {
+    color: #E29B8A; font-size: 12px; margin-top: -12px; margin-bottom: 14px; display: none;
+  }
+  .error-text.show { display: block; }
+
+  footer { padding: 44px 0; border-top: 1px solid var(--hairline); }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;
+    gap: 24px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--slate);
+  }
+  .footer-links { display: flex; gap: 22px; }
+  .footer-links a { text-decoration: none; }
+  .footer-links a:hover { color: var(--forest); }
+  .footer-legal { max-width: 640px; font-size: 11px; line-height: 1.6; color: var(--slate); opacity: 0.85; }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 940px) {
+    .wrap { padding: 0 24px; }
+    .nav-links { display: none; }
+    .notice-frame { grid-template-columns: 1fr; padding: 36px 26px 40px; }
+    .notice-frame::before { display: none; }
+    .seal { justify-self: start; margin-top: 20px; }
+    .services { grid-template-columns: 1fr; }
+    .service { border-right: none; }
+    .steps { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+    .proof { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .steps { grid-template-columns: 1fr; }
+    .proof { grid-template-columns: 1fr; }
+    .stat { border-right: none !important; border-bottom: 1px solid var(--hairline); }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="mark">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <circle cx="11" cy="11" r="9.5" stroke="#B8892B" stroke-width="1.2"/>
+        <path d="M7 12.5L10 15.5L15.5 8" stroke="#B8892B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Eriana Investments LLC
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#contact" class="btn nav-cta">Check My Eligibility</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="notice-frame">
+      <div class="notice-head">
+        <span>Surplus Funds Case Review</span>
+        <span>Eriana Investments LLC</span>
+      </div>
+
+      <div>
+        <span class="eyebrow">For former homeowners &amp; property owners</span>
+        <h1 style="margin-top:16px;">There may be <span class="underline-draw"><em>money owed to you</em></span> after your tax sale or foreclosure.</h1>
+        <p class="hero-sub">When a property sells at a tax deed or foreclosure auction for more than what was owed, the leftover — the surplus — belongs to the former owner. Most people never claim it. We find it, file it, and get it into your hands.</p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-gold">Check My Eligibility</a>
+          <a href="#process" class="btn">See how it works &nbsp;→</a>
+        </div>
+        <div class="no-fee-note"><strong>No recovery, no fee</strong> — we're paid a percentage only if your funds are recovered.</div>
+      </div>
+
+      <div class="seal">
+        <div class="seal-text">
+          Contingency
+          <span class="big">No Fee<br>Unless Paid</span>
+          Basis Only
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What We Recover</span>
+      <h2>Three sources of unclaimed surplus.</h2>
+      <p>County and court records hold billions in unclaimed surplus funds. We search, verify, and file the paperwork most people don't know exists.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="services reveal">
+      <div class="service">
+        <span class="num">Tax Sales</span>
+        <h3>Tax Deed Surplus Recovery</h3>
+        <p>When a property is sold at a county tax auction for more than the taxes owed, the excess is held for the former owner to claim.</p>
+      </div>
+      <div class="service">
+        <span class="num">Foreclosures</span>
+        <h3>Foreclosure Surplus Recovery</h3>
+        <p>After a mortgage foreclosure sale, any amount above what was owed to the lender is surplus — and it's often left unclaimed with the court.</p>
+      </div>
+      <div class="service">
+        <span class="num">Records Search</span>
+        <h3>Unclaimed Funds Search</h3>
+        <p>No case number, no problem. We search county and state records on your behalf to check whether funds are sitting in your name.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">How It Works</span>
+      <h2>Four steps, start to finish — we handle the paperwork.</h2>
+      <p>Recovering surplus funds means dealing with courts, county clerks, and strict claim deadlines. This is the order it has to happen in.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <span class="step-num">I.</span>
+        <h3>Search</h3>
+        <p>We search public records to confirm a surplus exists in your name and how much is owed.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">II.</span>
+        <h3>Verify</h3>
+        <p>We confirm your identity and ownership history to establish your legal claim to the funds.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">III.</span>
+        <h3>File</h3>
+        <p>We prepare and submit the claim paperwork to the county or court holding the funds.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">IV.</span>
+        <h3>Collect</h3>
+        <p>Once approved, funds are disbursed to you directly. We're paid our fee only at that point.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="results-proof">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why It Matters</span>
+      <h2>Surplus funds go unclaimed more often than you'd think.</h2>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="proof reveal">
+      <div class="stat">
+        <div class="figure">$0<span>&nbsp;upfront</span></div>
+        <div class="label">You never pay out of pocket to start a case</div>
+      </div>
+      <div class="stat">
+        <div class="figure">1<span>–</span>3<span>yr</span></div>
+        <div class="label">Typical window before claim deadlines expire</div>
+      </div>
+      <div class="stat">
+        <div class="figure">50<span>+</span></div>
+        <div class="label">Counties whose surplus fund records we monitor</div>
+      </div>
+      <div class="stat">
+        <div class="figure">100<span>%</span></div>
+        <div class="label">Contingency — we only get paid if you get paid</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Frequently Asked</span>
+      <h2>Before you reach out.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item open">
+        <button class="faq-q" aria-expanded="true">Is this legitimate?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Surplus funds from tax sales and foreclosures are a matter of public record, held by the county or court. Recovering funds owed to you is a legal right — we simply handle the research and filing on your behalf.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What does it cost me?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Nothing upfront. We work on contingency, meaning our fee is a percentage of the funds recovered — and only if we recover them.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How do I know if I'm owed anything?<span class="plus">+</span></button>
+        <div class="faq-a"><p>If you lost a property to a tax sale or foreclosure, tell us the county and approximate date. We'll search the records and let you know what we find, at no cost to check.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How long does a claim take?<span class="plus">+</span></button>
+        <div class="faq-a"><p>It varies by county, but most claims resolve in a few months once filed. Deadlines to claim vary by state, so timing matters.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-copy reveal">
+      <span class="eyebrow">Start Your Case Review</span>
+      <h2 style="margin-top:16px;">Tell us about the property. We'll tell you what we find.</h2>
+      <p>Fill out the form and a member of our team will follow up to review your case — free of charge, with no obligation.</p>
+      <div class="contact-points">
+        <div class="contact-point"><span class="dot">—</span> No upfront cost to check your eligibility</div>
+        <div class="contact-point"><span class="dot">—</span> We handle the county and court paperwork</div>
+        <div class="contact-point"><span class="dot">—</span> You pay nothing unless funds are recovered</div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <form id="leadForm" novalidate action="https://formspree.io/f/mzdnvneg" method="POST">
+        <div id="formFields">
+          <div class="form-row">
+            <div class="field">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" placeholder="Jordan" required>
+            </div>
+            <div class="field">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Rivera" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
+            </div>
+            <div class="field">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@email.com" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="propertyState">Property State &amp; County</label>
+            <input type="text" id="propertyState" name="propertyState" placeholder="e.g. Florida, Broward County">
+          </div>
+
+          <div class="field">
+            <label for="message">Tell Us About Your Situation</label>
+            <textarea id="message" name="message" placeholder="Was it a tax deed sale or a foreclosure? When did it happen?"></textarea>
+          </div>
+
+          <div class="consent">
+            <input type="checkbox" id="tcpaConsent" name="tcpaConsent">
+            <label for="tcpaConsent">
+              By checking this box and submitting this form, I agree to receive calls and text messages from <strong>Eriana Investments LLC</strong> at the phone number provided above, including by automatic telephone dialing system and/or prerecorded or artificial voice, regarding my potential surplus funds claim. Consent is not a condition of any purchase or service, and is not required to submit this form. Message and data rates may apply. Message frequency varies. Reply <strong>STOP</strong> to opt out at any time, or <strong>HELP</strong> for help. See our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-of-service.html">Terms of Service</a>.
+            </label>
+          </div>
+          <div class="error-text" id="formError">Please complete all required fields to continue.</div>
+
+          <div class="form-submit-row">
+            <button type="submit" class="btn btn-gold">Submit for Case Review</button>
+            <span class="form-note">We typically respond within one business day.</span>
+          </div>
+        </div>
+
+        <div class="form-success" id="formSuccess">
+          <div class="check">✓</div>
+          <h3>Request received.</h3>
+          <p>Thank you — a member of the Eriana Investments LLC team will reach out shortly to review your case.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 Eriana Investments LLC</span>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#process">How It Works</a>
+      <a href="#faq">FAQ</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:18px; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--slate);">
+    <p>Eriana Investments LLC &nbsp;•&nbsp; Escondido, CA &nbsp;•&nbsp; <a href="tel:+17608456832">760-845-6832</a> &nbsp;•&nbsp; <a href="mailto:info@erianainvestments.com">info@erianainvestments.com</a></p>
+  </div>
+  <div class="wrap" style="margin-top:22px;">
+    <p class="footer-legal">Eriana Investments LLC assists individuals with the research, preparation, and filing of surplus funds claims following tax deed sales and foreclosure auctions. We are not a law firm and do not provide legal advice. Fees are contingency-based and disclosed prior to engagement. Availability of surplus funds and claim eligibility vary by county, state, and case.</p>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  const stepEls = document.querySelectorAll('.step');
+  const stepIo = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 120); stepIo.unobserve(e.target); }
+    });
+  }, { threshold: 0.2 });
+  stepEls.forEach(el => stepIo.observe(el));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-q').setAttribute('aria-expanded','false'); });
+      if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+
+  const form = document.getElementById('leadForm');
+  const fields = document.getElementById('formFields');
+  const success = document.getElementById('formSuccess');
+  const errorText = document.getElementById('formError');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const required = ['firstName','lastName','phone','email'];
+    let valid = true;
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) valid = false;
+    });
+
+    if (!valid) {
+      errorText.classList.add('show');
+      return;
+    }
+    errorText.classList.remove('show');
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(response => {
+        if (response.ok) {
+          fields.style.display = 'none';
+          success.classList.add('show');
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .catch(() => {
+        errorText.textContent = "Something went wrong sending your request. Please try again, or call us directly.";
+        errorText.classList.add('show');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit for Case Review';
+      });
+  });
+</script>
+
+</body>
+</html>
