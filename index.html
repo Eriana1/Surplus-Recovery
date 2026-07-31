@@ -64,17 +64,53 @@
     border-bottom: 1px solid var(--hairline);
   }
 
-  .nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
 
   .mark {
     font-family: 'Fraunces', serif;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 500;
     letter-spacing: -0.01em;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     text-decoration: none;
+    color: var(--forest);
+  }
+
+  .logo-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.4px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    background: var(--paper);
+  }
+  .logo-badge::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid var(--hairline);
+    border-radius: 50%;
+  }
+  .logo-badge span {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--forest);
+    position: relative;
+  }
+
+  .mark-text { display: flex; align-items: baseline; gap: 3px; line-height: 1.1; }
+  .mark-text .llc {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
   }
 
   .nav-links { display: flex; gap: 34px; list-style: none; font-size: 14px; }
@@ -84,6 +120,18 @@
     height: 1px; background: var(--gold); transition: right 0.25s ease;
   }
   .nav-links a:hover::after { right: 0; }
+
+  .nav-phone {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .nav-phone a.phone-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--forest);
+    white-space: nowrap;
+  }
 
   .btn {
     display: inline-flex; align-items: center; gap: 8px;
@@ -337,12 +385,19 @@
   .footer-links a:hover { color: var(--forest); }
   .footer-legal { max-width: 640px; font-size: 11px; line-height: 1.6; color: var(--slate); opacity: 0.85; }
 
+  .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  .footer-brand .logo-badge { width: 30px; height: 30px; border-color: var(--gold); }
+  .footer-brand .logo-badge span { font-size: 13px; }
+  .footer-brand-text { font-family: 'Fraunces', serif; font-size: 15px; color: var(--forest); }
+  .footer-brand-text .llc { font-style: italic; font-size: 11px; color: var(--gold); margin-left: 2px; }
+
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 940px) {
     .wrap { padding: 0 24px; }
     .nav-links { display: none; }
+    .nav-phone .phone-link { display: none; }
     .notice-frame { grid-template-columns: 1fr; padding: 36px 26px 40px; }
     .notice-frame::before { display: none; }
     .seal { justify-self: start; margin-top: 20px; }
@@ -367,18 +422,18 @@
 <header>
   <div class="wrap nav">
     <a href="#" class="mark">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <circle cx="11" cy="11" r="9.5" stroke="#B8892B" stroke-width="1.2"/>
-        <path d="M7 12.5L10 15.5L15.5 8" stroke="#B8892B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Eriana Investments LLC
+      <span class="logo-badge"><span>E</span></span>
+      <span class="mark-text">Eriana Investments<span class="llc">LLC</span></span>
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#process">How It Works</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a href="#contact" class="btn nav-cta">Check My Eligibility</a>
+    <div class="nav-phone">
+      <a href="tel:+18336211665" class="phone-link">1-833-621-1665</a>
+      <a href="#contact" class="btn nav-cta">Check My Eligibility</a>
+    </div>
   </div>
 </header>
 
@@ -399,7 +454,7 @@
           <a href="#contact" class="btn btn-gold">Check My Eligibility</a>
           <a href="#process" class="btn">See how it works &nbsp;→</a>
         </div>
-        <div class="no-fee-note"><strong>No recovery, no fee</strong> — we're paid a percentage only if your funds are recovered.</div>
+        <div class="no-fee-note"><strong>No recovery, no fee</strong> — we're paid a percentage only if your funds are recovered. Prefer to talk? Call <a href="tel:+18336211665" style="color:var(--forest); text-decoration:underline;">1-833-621-1665</a>.</div>
       </div>
 
       <div class="seal">
@@ -535,7 +590,7 @@
     <div class="contact-copy reveal">
       <span class="eyebrow">Start Your Case Review</span>
       <h2 style="margin-top:16px;">Tell us about the property. We'll tell you what we find.</h2>
-      <p>Fill out the form and a member of our team will follow up to review your case — free of charge, with no obligation.</p>
+      <p>Fill out the form and a member of our team will follow up to review your case — free of charge, with no obligation. Or call us directly at <a href="tel:+18336211665" style="color:var(--gold-bright); text-decoration:underline;">1-833-621-1665</a>.</p>
       <div class="contact-points">
         <div class="contact-point"><span class="dot">—</span> No upfront cost to check your eligibility</div>
         <div class="contact-point"><span class="dot">—</span> We handle the county and court paperwork</div>
@@ -604,7 +659,13 @@
 
 <footer>
   <div class="wrap footer-inner">
-    <span>© 2026 Eriana Investments LLC</span>
+    <div>
+      <div class="footer-brand">
+        <span class="logo-badge"><span>E</span></span>
+        <span class="footer-brand-text">Eriana Investments<span class="llc">LLC</span></span>
+      </div>
+      <span>© 2026 Eriana Investments LLC</span>
+    </div>
     <div class="footer-links">
       <a href="#services">Services</a>
       <a href="#process">How It Works</a>
@@ -614,7 +675,7 @@
     </div>
   </div>
   <div class="wrap" style="margin-top:18px; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--slate);">
-    <p>Eriana Investments LLC &nbsp;•&nbsp; Escondido, CA &nbsp;•&nbsp; <a href="tel:+17608456832">760-845-6832</a> &nbsp;•&nbsp; <a href="mailto:info@erianainvestments.com">info@erianainvestments.com</a></p>
+    <p>Eriana Investments LLC &nbsp;•&nbsp; Escondido, CA &nbsp;•&nbsp; <a href="tel:+18336211665">1-833-621-1665</a> &nbsp;•&nbsp; <a href="mailto:info@erianainvestments.com">info@erianainvestments.com</a></p>
   </div>
   <div class="wrap" style="margin-top:22px;">
     <p class="footer-legal">Eriana Investments LLC assists individuals with the research, preparation, and filing of surplus funds claims following tax deed sales and foreclosure auctions. We are not a law firm and do not provide legal advice. Fees are contingency-based and disclosed prior to engagement. Availability of surplus funds and claim eligibility vary by county, state, and case.</p>
